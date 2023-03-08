@@ -1,4 +1,4 @@
-const { User } = require("../../models/Auth");
+const { User } = require("../../models/User");
 const path = require("path");
 const fs = require("fs/promises");
 const Jimp = require("jimp");

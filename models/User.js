@@ -2,22 +2,61 @@ const Joi = require("joi");
 const { Schema, model } = require("mongoose");
 const bcrypt = require("bcryptjs");
 
-const authSchema = Schema(
+const userSchema = Schema(
   {
     username: {
       type: String,
+      require: true,
       min: 3,
       max: 20,
       unique: true,
     },
     email: {
       type: String,
-      required: [true, "Email is required"],
+      required: true,
+      max: 50,
       unique: true,
     },
     password: {
       type: String,
-      required: [true, "Password is required"],
+      required: true,
+      min: 6,
+    },
+    profilePicture: {
+      type: String,
+      default: "",
+    },
+    coverPicture: {
+      type: String,
+      default: "",
+    },
+    followers: {
+      type: Array,
+      default: [],
+    },
+    followings: {
+      type: Array,
+      default: [],
+    },
+    isAdmin: {
+      type: Boolean,
+      default: false,
+    },
+    desc: {
+      type: String,
+      max: 50,
+    },
+    city: {
+      type: String,
+      max: 50,
+    },
+    from: {
+      type: String,
+      max: 50,
+    },
+    relationship: {
+      type: Number,
+      enum: [1, 2, 3],
     },
     subscription: {
       type: String,
@@ -47,11 +86,11 @@ const authSchema = Schema(
   }
 );
 
-authSchema.methods.setPassword = function (password) {
+userSchema.methods.setPassword = function (password) {
   this.password = bcrypt.hashSync(password, bcrypt.genSaltSync(10));
 };
 
-authSchema.methods.comparePassword = function (password) {
+userSchema.methods.comparePassword = function (password) {
   return bcrypt.compareSync(password, this.password);
 };
 
@@ -61,9 +100,9 @@ const joiSchema = Joi.object({
   password: Joi.string().required(),
 });
 
-const Auth = model("auth", authSchema);
+const User = model("user", userSchema);
 
 module.exports = {
-  Auth,
+  User,
   joiSchema,
 };
