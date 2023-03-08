@@ -6,7 +6,6 @@ const authSchema = Schema(
   {
     username: {
       type: String,
-      required: true,
       min: 3,
       max: 20,
       unique: true,
@@ -57,7 +56,7 @@ authSchema.methods.comparePassword = function (password) {
 };
 
 const joiSchema = Joi.object({
-  username: Joi.string().required(),
+  username: Joi.string(),
   email: Joi.string().required(),
   password: Joi.string().required(),
 });
