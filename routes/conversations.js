@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const Conversation = require("../models/Conversation");
+// const { auth } = require("../middlewares");
 
 // new conv
 
@@ -22,6 +23,7 @@ router.get("/:userId", async (req, res) => {
     const conversation = await Conversation.find({
       members: { $in: [req.params.userId] },
     });
+    res.status(200).json(conversation);
   } catch (error) {
     res.status(500).json(error);
   }

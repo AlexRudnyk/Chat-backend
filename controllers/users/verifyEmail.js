@@ -19,7 +19,7 @@ const verifyEmail = async (req, res) => {
   </head>
   <body>
       <h1>Verification successful</h1>
-      <a href="http://localhost:3030/Chat-frontend/login">Go to Login page</a>
+      <a href="http://localhost:3030/Chat-frontend/users/login">Go to Login page</a>
   </body>
   <html>`);
 };

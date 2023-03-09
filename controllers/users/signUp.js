@@ -25,11 +25,13 @@ const signUp = async (req, res) => {
   await sendEmail(mail);
 
   res.status(201).json({
-    username,
-    email,
-    subscription: "starter",
-    avatarURL,
-    verificationToken,
+    user: {
+      username,
+      email,
+      subscription: "starter",
+      avatarURL,
+      verificationToken,
+    },
   });
 };
 

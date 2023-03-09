@@ -18,7 +18,6 @@ app.use(express.json());
 app.use(express.static("public"));
 
 app.use("/api/users", userRouter);
-// app.use("/api/contacts", contactsRouter);
 app.use("/api/conversations", conversationRoute);
 app.use("/api/messages", messageRoute);
 
