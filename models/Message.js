@@ -12,7 +12,7 @@ const MessageSchema = new mongoose.Schema(
       type: String,
     },
   },
-  { timestamps: true }
+  { versionKey: false, timestamps: true }
 );
 
 module.exports = mongoose.model("Message", MessageSchema);
