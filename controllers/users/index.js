@@ -5,6 +5,7 @@ const logout = require("./logout");
 const subscriptionChange = require("./subscriptionChange");
 const updateAvatar = require("./updateAvatar");
 const verifyEmail = require("./verifyEmail");
+const getAll = require("./getAll");
 
 module.exports = {
   signUp,
@@ -14,4 +15,5 @@ module.exports = {
   subscriptionChange,
   updateAvatar,
   verifyEmail,
+  getAll,
 };
