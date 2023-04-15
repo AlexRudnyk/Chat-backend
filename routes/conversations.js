@@ -1,6 +1,5 @@
 const router = require("express").Router();
 const Conversation = require("../models/Conversation");
-// const { auth } = require("../middlewares");
 
 // new conv
 
