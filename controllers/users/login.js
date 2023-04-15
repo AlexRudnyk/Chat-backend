@@ -21,12 +21,13 @@ const login = async (req, res) => {
     // , { expiresIn: "1d" }
   );
   await User.findByIdAndUpdate(user._id, { token });
-  const { subscription } = user;
+  const { subscription, avatarURL } = user;
   res.json({
     user: {
       id: user._id,
       email,
       subscription,
+      avatarURL,
     },
     token,
   });
