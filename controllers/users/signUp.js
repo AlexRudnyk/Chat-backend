@@ -1,6 +1,6 @@
 const { User } = require("../../models/User");
 const { Conflict } = require("http-errors");
-const gravatar = require("gravatar");
+// const gravatar = require("gravatar");
 const { v4 } = require("uuid");
 const { sendEmail } = require("../../helpers");
 
@@ -10,9 +10,14 @@ const signUp = async (req, res) => {
   if (user) {
     throw new Conflict(`${email} in use`);
   }
-  const avatarURL = gravatar.url(email);
+  // const avatarURL = gravatar.url(email);
   const verificationToken = v4();
-  const newUser = new User({ username, email, avatarURL, verificationToken });
+  const newUser = new User({
+    username,
+    email,
+    avatarURL: null,
+    verificationToken,
+  });
   newUser.setPassword(password);
   await newUser.save();
 
@@ -25,13 +30,7 @@ const signUp = async (req, res) => {
   await sendEmail(mail);
 
   res.status(201).json({
-    user: {
-      username,
-      email,
-      subscription: "starter",
-      avatarURL,
-      verificationToken,
-    },
+    message: "You have been successfully registered",
   });
 };
 

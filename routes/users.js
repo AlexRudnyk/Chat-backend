@@ -33,10 +33,10 @@ router.patch(
   validation(updateSubscriptionValidation),
   ctrlWrapper(ctrl.subscriptionChange)
 );
-router.patch(
+router.put(
   "/avatars",
   auth,
-  upload.single("avatar"),
+  upload.single("avatarURL"),
   ctrlWrapper(ctrl.updateAvatar)
 );
 

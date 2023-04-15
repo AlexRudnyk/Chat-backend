@@ -68,7 +68,7 @@ const userSchema = Schema(
     },
     avatarURL: {
       type: String,
-      required: true,
+      default: null,
     },
     verify: {
       type: Boolean,
@@ -97,6 +97,7 @@ const joiSchema = Joi.object({
   username: Joi.string(),
   email: Joi.string().required(),
   password: Joi.string().required(),
+  avatarURL: Joi.string(),
 });
 
 const User = model("user", userSchema);
